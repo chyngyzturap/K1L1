@@ -10,7 +10,7 @@ import android.widget.Toast
 import com.pharos.k1l1.MainActivity.Companion.TEXT_KEY
 
 class SecondActivity : AppCompatActivity() {
-    
+
     companion object {
         const val TEXT_KEY2 = "text2"
     }
@@ -19,16 +19,16 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        var editTextSecond = findViewById<EditText>(R.id.edit_text_second)
+        val editTextSecond = findViewById<EditText>(R.id.edit_text_second)
         val btnSecond = findViewById<Button>(R.id.btn_second)
-        var tvSecond = findViewById<TextView>(R.id.tv_second)
+        val tvSecond = findViewById<TextView>(R.id.tv_second)
 
         val textFromIntent = intent.getStringExtra(TEXT_KEY).toString()
-        tvSecond.setText(textFromIntent)
+        tvSecond.text = textFromIntent
 
         btnSecond.setOnClickListener {
-            var editText2: String = editTextSecond.text.toString()
-            if (editText2.trim().length > 0) {
+            val editText2: String = editTextSecond.text.toString()
+            if (editText2.trim().isNotEmpty()) {
                 val intent = Intent(this, MainActivity::class.java)
                 intent.putExtra(TEXT_KEY2, editText2)
                 startActivity(intent)

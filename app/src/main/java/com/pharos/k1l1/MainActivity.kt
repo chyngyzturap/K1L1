@@ -19,16 +19,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var editTextMain = findViewById<EditText>(R.id.edit_text_main)
+        val editTextMain = findViewById<EditText>(R.id.edit_text_main)
         val btnMain = findViewById<Button>(R.id.btn_main)
-        var tvMain = findViewById<TextView>(R.id.tv_main)
+        val tvMain = findViewById<TextView>(R.id.tv_main)
 
         val textFromIntent = intent.getStringExtra(TEXT_KEY2).toString()
-        tvMain.setText(textFromIntent)
+        tvMain.text = textFromIntent
 
         btnMain.setOnClickListener {
-            var editText: String = editTextMain.text.toString()
-            if (editText.trim().length > 0) {
+            val editText: String = editTextMain.text.toString()
+            if (editText.trim().isNotEmpty()) {
                 val intent = Intent(this, SecondActivity::class.java)
                 intent.putExtra(TEXT_KEY, editText)
                 startActivity(intent)
